@@ -256,6 +256,10 @@
 % Usage: \mobile{<mobile number>}
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
 
+% Defines writer's fixed phone (optional)
+% Usage: \phone{<phone number>}
+\newcommand*{\phone}[1]{\def\@phone{#1}}
+
 % Defines writer's email (optional)
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\def\@email{#1}}
@@ -342,13 +346,13 @@
 %% Define helper macros a user can change easily
 % Header
 \newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{.4mm}
-\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
-\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
+\newcommand{\acvHeaderAfterNameSkip}{2mm}
+\newcommand{\acvHeaderAfterPositionSkip}{1mm}
+\newcommand{\acvHeaderAfterAddressSkip}{2mm}
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-\newcommand{\acvHeaderAfterSocialSkip}{6mm}
-\newcommand{\acvHeaderAfterQuoteSkip}{5mm}
+\newcommand{\acvHeaderAfterSocialSkip}{4mm}
+\newcommand{\acvHeaderAfterQuoteSkip}{6mm}
 
 % Others
 \newcommand{\acvSectionTopSkip}{3mm}
@@ -389,6 +393,12 @@
         {%
           \faMobile\acvHeaderIconSep\@mobile%
           \setbool{isstart}{false}%
+        }%
+      \ifthenelse{\isundefined{\@phone}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \faPhone\acvHeaderIconSep\@phone%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
@@ -450,10 +460,13 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \@extrainfo%
         }%
-    } \\[\acvHeaderAfterSocialSkip]%
+    }%
     \ifthenelse{\isundefined{\@quote}}%
-      {}%
-      {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+      {\\[\acvHeaderAfterQuoteSkip]}%
+      {%
+        \\[\acvHeaderAfterSocialSkip]%
+        \headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}%
+      }%
   \end{center}%
 }
 
