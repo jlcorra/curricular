@@ -375,6 +375,9 @@
 \newcommand{\acvSectionTopSkip}{3mm}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
 
+% Boolean value to switch section title rule fill width
+\newbool{acvSectionRuleFill}
+\setbool{acvSectionRuleFill}{false}
 
 %-------------------------------------------------------------------------------
 %                Commands for utilities
@@ -500,6 +503,7 @@
   }
 }
 
+%-------------------------------------------------------------------------------
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
@@ -509,13 +513,16 @@
   \fancyfoot[R]{\footerstyle{#3}} 
 }
 
+%-------------------------------------------------------------------------------
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
   \vspace{\acvSectionTopSkip}
   \sectionstyle{#1}
   \phantomsection
-  \color{gray}\vhrulefill{0.9pt}
+  \ifbool{acvSectionRuleFill}%
+    {\par\nobreak\vspace*{-\baselineskip}\color{accent}\vhrulefill{0.6pt}}%
+    {\color{accent}\vhrulefill{0.6pt}}%
 }
 
 % Define a subsection for CV
@@ -537,6 +544,7 @@
   \vspace{2mm}
 }
 
+%-------------------------------------------------------------------------------
 % Define an environment for cventry
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
@@ -559,6 +567,7 @@
   \end{tabular*}%
 }
 
+%-------------------------------------------------------------------------------
 % Define an environment for cvhonor
 \newenvironment{cvhonors}{%
   \vspace{\acvSectionContentTopSkip}
@@ -577,6 +586,7 @@
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
+%-------------------------------------------------------------------------------
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
@@ -595,6 +605,7 @@
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
+%-------------------------------------------------------------------------------
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
