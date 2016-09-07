@@ -252,6 +252,10 @@
 % Usage: \name{<position>}
 \newcommand*{\position}[1]{\def\@position{#1}}
 
+% Defines writer's photograph (optional)
+% Usage: \photo{<file name>}
+\newcommand*{\photo}[1]{\def\@photo{#1}}
+
 % Defines writer's mobile (optional)
 % Usage: \mobile{<mobile number>}
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
@@ -337,6 +341,23 @@
 
 
 %-------------------------------------------------------------------------------
+%                Commands for icons
+%-------------------------------------------------------------------------------
+\newcommand*{\iconAddress}        {{\small\faMapMarker}~}
+\newcommand*{\iconMobile}         {{\large\faMobilePhone}~}
+\newcommand*{\iconPhone}          {{\textnormal\faPhone}~}
+\newcommand*{\iconEmail}          {{\small\faEnvelopeO}~}
+\newcommand*{\iconHomepage}       {{\small\faHome}~}
+
+\newcommand*{\iconGithub}         {{\small\faGithub}~}
+\newcommand*{\iconStack}          {{\small\faStackOverflow}~}
+\newcommand*{\iconLinkedin}       {{\small\faLinkedin}~}
+\newcommand*{\iconTwitter}        {{\small\faTwitter}~}
+\newcommand*{\iconSkype}          {{\small\faGithub}~}
+\newcommand*{\iconXing}           {{\small\faXing}~}
+
+
+%-------------------------------------------------------------------------------
 %                Commands for extra
 %-------------------------------------------------------------------------------
 %% Define helper macros a user can change easily
@@ -376,88 +397,107 @@
 % Define a header for CV
 % Usage: \makecvheader
 \newcommand*{\makecvheader}{%
-  \begin{center}
-    \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
-    \\[\acvHeaderAfterNameSkip]%
-    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
-    \headersocialstyle{%
-      \newbool{isstart}%
-      \setbool{isstart}{true}%
-      \ifthenelse{\isundefined{\@mobile}}%
-        {}%
-        {%
-          \faMobile\acvHeaderIconSep\@mobile%
-          \setbool{isstart}{false}%
-        }%
-      \ifthenelse{\isundefined{\@phone}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \faPhone\acvHeaderIconSep\@phone%
-        }%
-      \ifthenelse{\isundefined{\@email}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
-      \ifthenelse{\isundefined{\@homepage}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
-        }%
-      \ifthenelse{\isundefined{\@github}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
-        }%
-      \ifthenelse{\isundefined{\@stackoverflowid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-        }%
-      \ifthenelse{\isundefined{\@linkedin}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
-        }%
-      \ifthenelse{\isundefined{\@twitter}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
-        }%
-      \ifthenelse{\isundefined{\@skype}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \faSkype\acvHeaderIconSep\@skype%
-        }%
-      \ifthenelse{\isundefined{\@xing}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
-        }%
-      \ifthenelse{\isundefined{\@extrainfo}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \@extrainfo%
-        }%
-    }%
+  \begin{center}%
+    \ifthenelse{\isundefined{\@photo}}%
+      {%
+        \makecvpersonal
+      }{%
+        \begin{minipage}[c]{\textwidth - 4cm}
+          \raggedleft\makecvpersonal
+        \end{minipage}%
+        \begin{minipage}[c]{4cm}
+          \setlength{\fboxsep}{0pt}%
+          \setlength{\fboxrule}{0.6pt}%
+          \raggedleft\color{lightgray}\fbox{\includegraphics[width=3cm]{\@photo}}
+        \end{minipage}%
+      }%
     \ifthenelse{\isundefined{\@quote}}%
       {\\[\acvHeaderAfterQuoteSkip]}%
-      {%
-        \\[\acvHeaderAfterSocialSkip]%
-        \headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}%
-      }%
+      {\\[\acvHeaderAfterSocialSkip]%
+        \headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
   \end{center}%
+}
+% Define a personal information header for CV
+% Usage: \makecvpersonal
+\newcommand*{\makecvpersonal}{%
+  \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+  \\[\acvHeaderAfterNameSkip]%
+  \ifthenelse{\isundefined{\@position}}%
+    {}%
+    {\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+  \ifthenelse{\isundefined{\@address}}%
+    {}%
+    {\headeraddressstyle{\iconAddress\@address\\[\acvHeaderAfterAddressSkip]}}%
+  \headersocialstyle{%
+    \newbool{isstart}%
+    \setbool{isstart}{true}%
+    \ifthenelse{\isundefined{\@mobile}}%
+      {}%
+      {%
+        \iconMobile\acvHeaderIconSep\@mobile%
+        \setbool{isstart}{false}%
+      }%
+    \ifthenelse{\isundefined{\@phone}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \iconPhone\acvHeaderIconSep\@phone%
+      }%
+    \ifthenelse{\isundefined{\@email}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \href{mailto:\@email}{\iconEmail\acvHeaderIconSep\@email}%
+      }%
+    \ifthenelse{\isundefined{\@homepage}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \href{http://\@homepage}{\iconHomepage\acvHeaderIconSep\@homepage}%
+      }%
+    \ifthenelse{\isundefined{\@github}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \href{https://github.com/\@github}{\iconGithub\acvHeaderIconSep\@github}%
+      }%
+    \ifthenelse{\isundefined{\@stackoverflowid}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://stackoverflow.com/users/\@stackoverflowid}{\iconStack\acvHeaderIconSep\@stackoverflowname}%
+      }%
+    \ifthenelse{\isundefined{\@linkedin}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \href{https://www.linkedin.com/in/\@linkedin}{\iconLinkedin\acvHeaderIconSep\@linkedin}%
+      }%
+    \ifthenelse{\isundefined{\@twitter}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+        \href{https://twitter.com/\@twitter}{\iconTwitter\acvHeaderIconSep\@twitter}%
+      }%
+    \ifthenelse{\isundefined{\@skype}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \iconSkype\acvHeaderIconSep\@skype%
+      }%
+    \ifthenelse{\isundefined{\@xing}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}
+      }%
+    \ifthenelse{\isundefined{\@extrainfo}}%
+      {}%
+      {%
+        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
+        \@extrainfo%
+      }%
+  }
 }
 
 % Define a footer for CV
