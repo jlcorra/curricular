@@ -58,6 +58,8 @@
 \RequirePackage{geometry}
 % Needed to make header & footer effeciently
 \RequirePackage{fancyhdr}
+% Needed to make colored tables
+\RequirePackage{colortbl}
 % Needed to manage colors
 \RequirePackage{xcolor}
 % Needed to use \ifxetex-\else-\fi statement
@@ -219,6 +221,7 @@
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\normalsize\bodyfont\bfseries\textcolor{darktext}{#1}}}
+\newcommand*{\skillgroupstyle}[1]{{\normalsize\bodyfont\color{text} #1}}
 \newcommand*{\skillsetstyle}[1]{{\normalsize\bodyfontlight\textcolor{text}{#1}}}
 
 % For elements of the cover letter
@@ -616,7 +619,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvitems(for cventry)
+% Define an environment for cvitems
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
   \begin{justify}
@@ -627,6 +630,51 @@
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
+}
+
+%-------------------------------------------------------------------------------
+% Define an environment for cvgroup
+\newenvironment{cvgroups}{%
+  \ifthenelse{\isundefined{\c@group}}
+    {\newcounter{group}}
+    {\setcounter{group}{0}}
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \center
+    \setlength\tabcolsep{0.15cm}
+    \setlength{\arrayrulewidth}{0.8pt}
+    \setlength{\extrarowheight}{0pt}
+    \arrayrulecolor{accent}
+    \tabularx{\textwidth}{C{0.6cm} | X}
+}{%
+    \endtabularx
+  \endcenter
+}
+% Define a group of cv information(skills)
+% Usage: \cvgroup{<group>}{<skillset>}
+\newcommand*{\cvgroup}[2]{%
+  \stepcounter{group}
+  \ifnumodd{\value{group}}
+    {%
+      \skillgroupstyle{\cellcolor{lightgray!10}#1} &
+      \skillsetstyle{\begin{cvitems}#2\end{cvitems}} \\
+    }{%
+      \skillgroupstyle{#1} &
+      \skillsetstyle{\cellcolor{lightgray!10}\begin{cvitems}#2\end{cvitems}} \\
+    }
+}
+% Define a legend for cvgroup
+% Usage: \cvlegend{<title>}{<legend>}
+\newcommand*{\cvlegend}[2]{%
+  \cline{2-2}
+  \multicolumn{2}{L{\textwidth-0.75cm}}{%
+    \rule{0pt}{14pt}\hspace{0.75cm}\ifempty{#1}{#2}{#1\enspace#2}%
+  }
+}
+% Define an entry of cvgroup legend
+% Usage: \legend{<group>}{<description>}
+\newcommand*{\legend}[2]{%
+  \skillgroupstyle{#1}\enspace\skillsetstyle{\small#2}\enspace
 }
 
 
