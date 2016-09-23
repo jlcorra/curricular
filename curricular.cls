@@ -81,6 +81,8 @@
 \RequirePackage{fontawesome}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
+% Needed to loop through collections of items
+\RequirePackage{moderncvcollection}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
@@ -358,7 +360,7 @@
 \newcommand*{\iconStack}          {{\small\faStackOverflow}~}
 \newcommand*{\iconLinkedin}       {{\small\faLinkedin}~}
 \newcommand*{\iconTwitter}        {{\small\faTwitter}~}
-\newcommand*{\iconSkype}          {{\small\faGithub}~}
+\newcommand*{\iconSkype}          {{\small\faSkype}~}
 \newcommand*{\iconXing}           {{\small\faXing}~}
 
 
@@ -383,6 +385,7 @@
 % Boolean value to switch section title rule fill width
 \newbool{acvSectionRuleFill}
 \setbool{acvSectionRuleFill}{false}
+
 
 %-------------------------------------------------------------------------------
 %                Commands for utilities
@@ -443,76 +446,65 @@
   \ifthenelse{\isundefined{\@address}}%
     {}%
     {\headeraddressstyle{\iconAddress\@address\\[\acvHeaderAfterAddressSkip]}}%
-  \headersocialstyle{%
-    \newbool{isstart}%
-    \setbool{isstart}{true}%
-    \ifthenelse{\isundefined{\@mobile}}%
-      {}%
-      {%
-        \iconMobile\acvHeaderIconSep\@mobile%
-        \setbool{isstart}{false}%
-      }%
-    \ifthenelse{\isundefined{\@phone}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \iconPhone\acvHeaderIconSep\@phone%
-      }%
-    \ifthenelse{\isundefined{\@email}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \href{mailto:\@email}{\iconEmail\acvHeaderIconSep\@email}%
-      }%
-    \ifthenelse{\isundefined{\@homepage}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \href{http://\@homepage}{\iconHomepage\acvHeaderIconSep\@homepage}%
-      }%
-    \ifthenelse{\isundefined{\@github}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \href{https://github.com/\@github}{\iconGithub\acvHeaderIconSep\@github}%
-      }%
-    \ifthenelse{\isundefined{\@stackoverflowid}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://stackoverflow.com/users/\@stackoverflowid}{\iconStack\acvHeaderIconSep\@stackoverflowname}%
-      }%
-    \ifthenelse{\isundefined{\@linkedin}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \href{https://www.linkedin.com/in/\@linkedin}{\iconLinkedin\acvHeaderIconSep\@linkedin}%
-      }%
-    \ifthenelse{\isundefined{\@twitter}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-        \href{https://twitter.com/\@twitter}{\iconTwitter\acvHeaderIconSep\@twitter}%
-      }%
-    \ifthenelse{\isundefined{\@skype}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \iconSkype\acvHeaderIconSep\@skype%
-      }%
-    \ifthenelse{\isundefined{\@xing}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}
-      }%
-    \ifthenelse{\isundefined{\@extrainfo}}%
-      {}%
-      {%
-        \ifbool{isstart}{\setbool{istart}{false}}{\acvHeaderSocialSep}%
-        \@extrainfo%
-      }%
-  }
+  \collectionnew{cvsocial}%
+  \ifthenelse{\isundefined{\@mobile}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \iconMobile\acvHeaderIconSep\@mobile%
+    }}%
+  \ifthenelse{\isundefined{\@phone}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \iconPhone\acvHeaderIconSep\@phone%
+    }}%
+  \ifthenelse{\isundefined{\@email}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{mailto:\@email}{\iconEmail\acvHeaderIconSep\@email}%
+    }}%
+  \ifthenelse{\isundefined{\@homepage}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{http://\@homepage}{\iconHomepage\acvHeaderIconSep\@homepage}%
+    }}%
+  \ifthenelse{\isundefined{\@github}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{https://github.com/\@github}{\iconGithub\acvHeaderIconSep\@github}%
+    }}%
+  \ifthenelse{\isundefined{\@stackoverflowid}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{https://stackoverflow.com/users/\@stackoverflowid}{\iconStack\acvHeaderIconSep\@stackoverflowname}%
+    }}%
+  \ifthenelse{\isundefined{\@linkedin}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{https://www.linkedin.com/in/\@linkedin}{\iconLinkedin\acvHeaderIconSep\@linkedin}%
+    }}%
+  \ifthenelse{\isundefined{\@twitter}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{https://twitter.com/\@twitter}{\iconTwitter\acvHeaderIconSep\@twitter}%
+    }}%
+  \ifthenelse{\isundefined{\@skype}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \iconSkype\acvHeaderIconSep\@skype%
+    }}%
+  \ifthenelse{\isundefined{\@xing}}%
+    {}%
+    {\collectionadd{cvsocial}{%
+      \href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}%
+    }}%
+  \collectionloop{cvsocial}{%
+    \ifthenelse{\collectionloopid = 0}%
+      {\headersocialstyle{\collectionloopitem}}%
+      {\headersocialstyle{\acvHeaderSocialSep\collectionloopitem}}%
+  }%
+  \ifthenelse{\isundefined{\@extrainfo}}%
+    {}%
+    {\\[\acvHeaderAfterSocialSkip]\headersocialstyle{\@extrainfo}}%
 }
 
 %-------------------------------------------------------------------------------
