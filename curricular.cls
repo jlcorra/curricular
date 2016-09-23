@@ -446,7 +446,17 @@
   \ifthenelse{\isundefined{\@address}}%
     {}%
     {\headeraddressstyle{\iconAddress\@address\\[\acvHeaderAfterAddressSkip]}}%
-  \collectionnew{cvsocial}%
+  \makecvsocial
+  \ifthenelse{\isundefined{\@extrainfo}}%
+    {}%
+    {\\[\acvHeaderAfterSocialSkip]\headersocialstyle{\@extrainfo}}%
+}
+% Define a social information header for CV
+% Usage: \makecvsocial
+\newcommand*{\makecvsocial}{%
+  \ifthenelse{\isundefined{\c@collection@cvsocial@count}}%
+    {\collectionnew{cvsocial}}%
+    {\setcounter{collection@cvsocial@count}{0}}%
   \ifthenelse{\isundefined{\@mobile}}%
     {}%
     {\collectionadd{cvsocial}{%
@@ -497,15 +507,34 @@
     {\collectionadd{cvsocial}{%
       \href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}%
     }}%
+  \ifthenelse{\isundefined{\box@cvsocial}}%
+    {\newsavebox{\box@cvsocial}}%
+    {}%
+  \ifthenelse{\isundefined{\box@temp}}%
+    {\newsavebox{\box@temp}}%
+    {}%
+  \ifthenelse{\isundefined{\@acvHeaderSocialWidth}}%
+    {\newlength{\@acvHeaderSocialWidth}}%
+    {}%
+  \setlength{\@acvHeaderSocialWidth}{0pt}%
   \collectionloop{cvsocial}{%
     \ifthenelse{\collectionloopid = 0}%
-      {\headersocialstyle{\collectionloopitem}}%
-      {\headersocialstyle{\acvHeaderSocialSep\collectionloopitem}}%
+      {\savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}}%
+      {%
+        \savebox{\box@temp}%
+          {\usebox{\box@cvsocial}\headersocialstyle{\acvHeaderSocialSep\collectionloopitem}}%
+        \settowidth{\@acvHeaderSocialWidth}{\usebox{\box@temp}}%
+        \ifthenelse{\lengthtest{\@acvHeaderSocialWidth > \textwidth}}%
+          {%
+            \usebox{\box@cvsocial}\\%
+            \savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}%
+          }{%
+            \savebox{\box@cvsocial}{\usebox{\box@temp}}%
+          }%
+      }%
   }%
-  \ifthenelse{\isundefined{\@extrainfo}}%
-    {}%
-    {\\[\acvHeaderAfterSocialSkip]\headersocialstyle{\@extrainfo}}%
-}
+  \usebox{\box@cvsocial}%
+}%
 
 %-------------------------------------------------------------------------------
 % Define a footer for CV
