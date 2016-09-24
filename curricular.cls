@@ -1,27 +1,18 @@
 %% Start of file `curricular.cls'.
-% Awesome CV Class File
+% Curricular document class
 %
-% This class has been downloaded from:
-% https://github.com/posquit0/Awesome-CV
+% Copyright (c) 2016 José L. Corrales
+% based on Awesome CV by Claud D. Park
 %
-% Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
-%
-% Notes:
-% 1) This class file defines the structure and layout of the template file (cv.tex, resume.tex).
-% 2) It has been written in such a way that under most circumstances you 
-% should not need to edit it.
-%
-% Class license:
-% LPPL v1.3c (http://www.latex-project.org/lppl)
-%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
 
 
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{curricular}[2016/09/06 v0.1.0 curricular document class]
+\ProvidesClass{curricular}[2016/09/24 v0.1.0 Curricular document class]
 \NeedsTeXFormat{LaTeX2e}
 
 
