@@ -1,7 +1,7 @@
 %% Start of file `curricular.cls'.
 % Curricular document class
 %
-% Copyright (c) 2016 José L. Corrales
+% Copyright (c) 2017 José L. Corrales
 % based on Awesome CV by Claud D. Park
 %
 % This work may be distributed and/or modified under the
@@ -12,7 +12,7 @@
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{curricular}[2016/09/24 v0.1.0 Curricular document class]
+\ProvidesClass{curricular}[2017/02/13 v0.1.1 Curricular document class]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -66,7 +66,7 @@
 % To support LaTeX quoting style
 \defaultfontfeatures{Ligatures=TeX}
 % Needed to manage math fonts
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+\RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
