@@ -43,6 +43,8 @@
 \RequirePackage{tabularx}
 % Needed to handle list environment
 \RequirePackage{enumitem}
+% Needed to include graphics with extended arguments
+\RequirePackage{graphicx}
 % Needed to handle text alignment
 \RequirePackage{ragged2e}
 % Needed to configure page layout
