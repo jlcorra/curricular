@@ -12,7 +12,7 @@
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{curricular}[2017/02/13 v0.1.1 Curricular document class]
+\ProvidesClass{curricular}[2017/02/13 v0.1.3 Curricular document class]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -502,9 +502,20 @@
 }
 
 %-------------------------------------------------------------------------------
+% Define an environment for cvitems
+\newenvironment{cvitems}{%
+  \begin{itemize}[leftmargin=2ex, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{$\smblksquare$}
+  }{%
+  \end{itemize}
+}
+
+%-------------------------------------------------------------------------------
 % Define an environment for cventry
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
   \begin{center}
 }{%
   \end{center}
@@ -512,7 +523,6 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -528,7 +538,7 @@
 % Define an environment for cvhonor
 \newenvironment{cvhonors}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
+  \vspace{-2.0mm}
   \center
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
@@ -564,20 +574,6 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvitems
-\newenvironment{cvitems}{%
-  \vspace{-4.0mm}
-  \begin{justify}
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
-    \renewcommand{\labelitemi}{$\smblksquare$}
-}{%
-  \end{itemize}
-  \end{justify}
-  \vspace{-4.0mm}
-}
-
-%-------------------------------------------------------------------------------
 % Define an environment for cvgroup
 \newenvironment{cvgroups}{%
   \ifthenelse{\isundefined{\c@group}}
@@ -602,10 +598,14 @@
   \ifnumodd{\value{group}}
     {%
       \skillgroupstyle{\cellcolor{lightgray!10}#1} &
-      \skillsetstyle{\begin{cvitems}#2\end{cvitems}} \\
+      \skillsetstyle{%
+        \vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
+      } \\
     }{%
       \skillgroupstyle{#1} &
-      \skillsetstyle{\cellcolor{lightgray!10}\begin{cvitems}#2\end{cvitems}} \\
+      \skillsetstyle{\cellcolor{lightgray!10}%
+        \vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
+      } \\
     }
 }
 % Define a legend for cvgroup
