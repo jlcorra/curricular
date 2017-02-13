@@ -12,7 +12,7 @@
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{curricular}[2017/02/13 v0.1.3 Curricular document class]
+\ProvidesClass{curricular}[2017/02/13 v0.1.4 curricular document class]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -491,14 +491,15 @@
   \phantomsection
 }
 
-% Define a paragraph for CV
+%-------------------------------------------------------------------------------
+% Define an environment for cvparagraph
 \newenvironment{cvparagraph}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{1mm}
-  \paragraphstyle
+  \vspace{-2.0mm}
+  \begin{justify}
+    \paragraphstyle
 }{%
-  \par
-  \vspace{1mm}
+  \end{justify}
 }
 
 %-------------------------------------------------------------------------------
