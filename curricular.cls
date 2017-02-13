@@ -316,14 +316,17 @@
 %-------------------------------------------------------------------------------
 % Use to align an element of tabular table
 % Define in terms of m{} to center vertically
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{%
+  >{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{%
+  >{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 % Use to align an element of tabularx table
 % Define in terms of m{} to center vertically
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
-\newcolumntype{Y}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{Y}{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}X}
 \newcolumntype{Z}{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}X}
 
 % Use to draw horizontal line with specific thickness
@@ -587,7 +590,7 @@
     \setlength{\arrayrulewidth}{0.8pt}
     \setlength{\extrarowheight}{0pt}
     \arrayrulecolor{accent}
-    \tabularx{\textwidth}{C{0.6cm} | X}
+    \tabularx{\textwidth}{c | X}
 }{%
     \endtabularx
   \endcenter
