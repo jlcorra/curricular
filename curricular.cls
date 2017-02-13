@@ -72,6 +72,7 @@
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
+% Needed to use the Source Sans Pro typeface
 \RequirePackage[default,opentype]{sourcesanspro}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
@@ -151,7 +152,10 @@
   BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
+% Set font for footer (default is Source Sans Pro)
 \newcommand*{\footerfont}{\sourcesanspro}
+
+% Set font for body (default is Source Sans Pro)
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
