@@ -164,14 +164,14 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\Huge\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\Huge\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\huge\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\huge\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\large\bodyfont\color{accent} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\small\headerfont\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\small\headerfont\color{lighttext} #1}}
 \newcommand*{\headerquotestyle}[1]{{\normalsize\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\small\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\Large\bodyfont\scshape\color{accent} #1}}
+\newcommand*{\sectionstyle}[1]{{\large\bodyfont\color{accent}\uppercase{#1}}}
 \newcommand*{\subsectionstyle}[1]{{\large\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\normalsize\bodyfontlight\upshape\color{text}}
 
@@ -183,9 +183,9 @@
 \newcommand*{\descriptionstyle}[1]{{\normalsize\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\normalsize\bodyfont\itshape\color{text} #1}}
+\newcommand*{\honortitlestyle}[1]{{\normalsize\bodyfontlight\itshape\color{text} #1}}
 \newcommand*{\honorpositionstyle}[1]{{\normalsize\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\normalsize\bodyfont\color{graytext} #1}}
+\newcommand*{\honordatestyle}[1]{{\normalsize\bodyfontlight\color{graytext} #1}}
 \newcommand*{\honorlocationstyle}[1]{{\normalsize\bodyfontlight\slshape\color{accent} #1}}
 
 % For elements of skill
