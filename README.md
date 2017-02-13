@@ -3,4 +3,4 @@
 
 
 ## License
-This work may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3 of this license or (at your option) any later version. The latest version of this license is always available at http://www.latex-project.org/lppl and a copy of version 1.3 is provided in [`LICENSE.md`](LICENSE.md).
+This work may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3 of this license or (at your option) any later version. The latest version of this license is always available at http://www.latex-project.org/lppl and a copy of version 1.3 is provided in [`LICENSE.txt`](LICENSE.txt).
