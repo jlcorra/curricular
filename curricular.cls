@@ -508,7 +508,7 @@
 %-------------------------------------------------------------------------------
 % Define an environment for lists of items
 \newenvironment{cvitems}{%
-	\begin{itemize}[leftmargin=2ex, noitemsep]
+	\begin{itemize}[nosep,leftmargin=2ex]
 		\setlength{\parskip}{0pt}
 		\renewcommand{\labelitemi}{$\smblksquare$}
 	}{%
