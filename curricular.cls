@@ -495,7 +495,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvparagraph
+% Define an environment for paragraphs
 \newenvironment{cvparagraph}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -506,7 +506,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvitems
+% Define an environment for lists of items
 \newenvironment{cvitems}{%
   \begin{itemize}[leftmargin=2ex, noitemsep]
     \setlength{\parskip}{0pt}
@@ -516,7 +516,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cventry
+% Define an environment for entries of experience/education
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -524,7 +524,7 @@
 }{%
   \end{center}
 }
-% Define an entry of cv information
+% Define an entry of experience/education
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
   \setlength\tabcolsep{0pt}
@@ -539,7 +539,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvwork
+% Define an environment for academic works and projects
 \newenvironment{cvworks}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -547,7 +547,7 @@
 }{%
   \end{center}
 }
-% Define an entry of cv information(work)
+% Define an academic work or project
 % Usage: \cvwork{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cvwork}[5]{%
   \setlength\tabcolsep{0pt}
@@ -562,7 +562,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvhonor
+% Define an environment for honors and awards
 \newenvironment{cvhonors}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -574,14 +574,14 @@
     \endtabularx
   \endcenter
 }
-% Define a line of cv information(honor, award or something else)
+% Define an entry for an honor or award
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvskill
+% Define an environment for sets of skills
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -594,14 +594,14 @@
     \endtabularx
   \endcenter
 }
-% Define a line of cv information(skill)
+% Define a set of skills
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 %-------------------------------------------------------------------------------
-% Define an environment for cvgroup
+% Define an environment for groups of skills
 \newenvironment{cvgroups}{%
   \ifthenelse{\isundefined{\c@group}}
     {\newcounter{group}}
@@ -618,7 +618,7 @@
     \endtabularx
   \endcenter
 }
-% Define a group of cv information(skills)
+% Define a group of skills
 % Usage: \cvgroup{<group>}{<skillset>}
 \newcommand*{\cvgroup}[2]{%
   \stepcounter{group}
@@ -635,7 +635,7 @@
       } \\
     }
 }
-% Define a legend for cvgroup
+% Define a legend for cvgroups
 % Usage: \cvlegend{<title>}{<legend>}
 \newcommand*{\cvlegend}[2]{%
   \cline{2-2}
@@ -643,7 +643,7 @@
     \rule{0pt}{14pt}\hspace{0.75cm}\ifempty{#1}{#2}{#1\enspace#2}%
   }
 }
-% Define an entry of cvgroup legend
+% Define an entry of cvgroups legend
 % Usage: \legend{<group>}{<description>}
 \newcommand*{\legend}[2]{%
   \skillgroupstyle{#1}\enspace\skillsetstyle{\small#2}\enspace
