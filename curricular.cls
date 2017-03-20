@@ -28,7 +28,7 @@
 \DeclareOption{final}{\setlength\overfullrule{0pt}}
 % Inherit options of article
 \DeclareOption*{%
-  \PassOptionsToClass{\CurrentOption}{article}
+	\PassOptionsToClass{\CurrentOption}{article}
 }
 \ProcessOptions\relax
 \LoadClass{article}
@@ -81,10 +81,10 @@
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
-  pdftitle={},
-  pdfauthor={},
-  pdfsubject={},
-  pdfkeywords={}
+	pdftitle={},
+	pdfauthor={},
+	pdfsubject={},
+	pdfkeywords={}
 }
 
 
@@ -137,19 +137,19 @@
 %-------------------------------------------------------------------------------
 % Set font for header (default is Roboto)
 \newfontfamily\headerfont[
-  Path=\@fontdir,
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic,
+	Path=\@fontdir,
+	UprightFont=*-Regular,
+	ItalicFont=*-Italic,
+	BoldFont=*-Bold,
+	BoldItalicFont=*-BoldItalic,
 ]{Roboto}
 
 \newfontfamily\headerfontlight[
-  Path=\@fontdir,
-  UprightFont=*-Thin,
-  ItalicFont=*-ThinItalic,
-  BoldFont=*-Medium,
-  BoldItalicFont=*-MediumItalic,
+	Path=\@fontdir,
+	UprightFont=*-Thin,
+	ItalicFont=*-ThinItalic,
+	BoldFont=*-Medium,
+	BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
 % Set font for footer (default is Source Sans Pro)
@@ -317,11 +317,11 @@
 % Use to align an element of tabular table
 % Define in terms of m{} to center vertically
 \newcolumntype{L}[1]{%
-  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{%
-  >{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{%
-  >{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 % Use to align an element of tabularx table
 % Define in terms of m{} to center vertically
@@ -342,257 +342,257 @@
 % Define a header for CV
 % Usage: \makecvheader
 \newcommand*{\makecvheader}{%
-  \begin{center}%
-    \ifthenelse{\isundefined{\@photo}}%
-      {%
-        \makecvpersonal
-      }{%
-        \begin{minipage}[c]{\textwidth - 4cm}
-          \raggedleft\makecvpersonal
-        \end{minipage}%
-        \begin{minipage}[c]{4cm}
-          \setlength{\fboxsep}{0pt}%
-          \setlength{\fboxrule}{0.6pt}%
-          \raggedleft\color{lightgray}\fbox{\includegraphics[width=3cm]{\@photo}}
-        \end{minipage}%
-      }%
-    \ifthenelse{\isundefined{\@quote}}%
-      {\\[\acvHeaderAfterQuoteSkip]}%
-      {\\[\acvHeaderAfterSocialSkip]%
-        \headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
-  \end{center}%
+	\begin{center}%
+		\ifthenelse{\isundefined{\@photo}}%
+			{%
+				\makecvpersonal
+			}{%
+				\begin{minipage}[c]{\textwidth - 4cm}
+					\raggedleft\makecvpersonal
+				\end{minipage}%
+				\begin{minipage}[c]{4cm}
+					\setlength{\fboxsep}{0pt}%
+					\setlength{\fboxrule}{0.6pt}%
+					\raggedleft\color{lightgray}\fbox{\includegraphics[width=3cm]{\@photo}}
+				\end{minipage}%
+			}%
+		\ifthenelse{\isundefined{\@quote}}%
+			{\\[\acvHeaderAfterQuoteSkip]}%
+			{\\[\acvHeaderAfterSocialSkip]%
+				\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+	\end{center}%
 }
 % Define a personal information header for CV
 % Usage: \makecvpersonal
 \newcommand*{\makecvpersonal}{%
-  \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
-  \\[\acvHeaderAfterNameSkip]%
-  \ifthenelse{\isundefined{\@position}}%
-    {}%
-    {\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-  \ifthenelse{\isundefined{\@address}}%
-    {}%
-    {\headeraddressstyle{\iconAddress\@address\\[\acvHeaderAfterAddressSkip]}}%
-  \makecvsocial
-  \ifthenelse{\isundefined{\@extrainfo}}%
-    {}%
-    {\\[\acvHeaderAfterSocialSkip]\headersocialstyle{\@extrainfo}}%
+	\headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+	\\[\acvHeaderAfterNameSkip]%
+	\ifthenelse{\isundefined{\@position}}%
+		{}%
+		{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+	\ifthenelse{\isundefined{\@address}}%
+		{}%
+		{\headeraddressstyle{\iconAddress\@address\\[\acvHeaderAfterAddressSkip]}}%
+	\makecvsocial
+	\ifthenelse{\isundefined{\@extrainfo}}%
+		{}%
+		{\\[\acvHeaderAfterSocialSkip]\headersocialstyle{\@extrainfo}}%
 }
 % Define a social information header for CV
 % Usage: \makecvsocial
 \newcommand*{\makecvsocial}{%
-  \ifthenelse{\isundefined{\c@collection@cvsocial@count}}%
-    {\collectionnew{cvsocial}}%
-    {\setcounter{collection@cvsocial@count}{0}}%
-  \ifthenelse{\isundefined{\@mobile}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \iconMobile\acvHeaderIconSep\@mobile%
-    }}%
-  \ifthenelse{\isundefined{\@phone}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \iconPhone\acvHeaderIconSep\@phone%
-    }}%
-  \ifthenelse{\isundefined{\@email}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{mailto:\@email}{\iconEmail\acvHeaderIconSep\@email}%
-    }}%
-  \ifthenelse{\isundefined{\@homepage}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{http://\@homepage}{\iconHomepage\acvHeaderIconSep\@homepage}%
-    }}%
-  \ifthenelse{\isundefined{\@github}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{https://github.com/\@github}{\iconGithub\acvHeaderIconSep\@github}%
-    }}%
-  \ifthenelse{\isundefined{\@stackoverflowid}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{https://stackoverflow.com/users/\@stackoverflowid}{\iconStack\acvHeaderIconSep\@stackoverflowname}%
-    }}%
-  \ifthenelse{\isundefined{\@linkedin}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{https://www.linkedin.com/in/\@linkedin}{\iconLinkedin\acvHeaderIconSep\@linkedin}%
-    }}%
-  \ifthenelse{\isundefined{\@twitter}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{https://twitter.com/\@twitter}{\iconTwitter\acvHeaderIconSep\@twitter}%
-    }}%
-  \ifthenelse{\isundefined{\@skype}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \iconSkype\acvHeaderIconSep\@skype%
-    }}%
-  \ifthenelse{\isundefined{\@xing}}%
-    {}%
-    {\collectionadd{cvsocial}{%
-      \href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}%
-    }}%
-  \ifthenelse{\isundefined{\box@cvsocial}}%
-    {\newsavebox{\box@cvsocial}}%
-    {}%
-  \ifthenelse{\isundefined{\box@temp}}%
-    {\newsavebox{\box@temp}}%
-    {}%
-  \ifthenelse{\isundefined{\@acvHeaderSocialWidth}}%
-    {\newlength{\@acvHeaderSocialWidth}}%
-    {}%
-  \setlength{\@acvHeaderSocialWidth}{0pt}%
-  \collectionloop{cvsocial}{%
-    \ifthenelse{\collectionloopid = 0}%
-      {\savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}}%
-      {%
-        \savebox{\box@temp}%
-          {\usebox{\box@cvsocial}\headersocialstyle{\acvHeaderSocialSep\collectionloopitem}}%
-        \settowidth{\@acvHeaderSocialWidth}{\usebox{\box@temp}}%
-        \ifthenelse{\lengthtest{\@acvHeaderSocialWidth > \textwidth}}%
-          {%
-            \usebox{\box@cvsocial}\\%
-            \savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}%
-          }{%
-            \savebox{\box@cvsocial}{\usebox{\box@temp}}%
-          }%
-      }%
-  }%
-  \usebox{\box@cvsocial}%
+	\ifthenelse{\isundefined{\c@collection@cvsocial@count}}%
+		{\collectionnew{cvsocial}}%
+		{\setcounter{collection@cvsocial@count}{0}}%
+	\ifthenelse{\isundefined{\@mobile}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\iconMobile\acvHeaderIconSep\@mobile%
+		}}%
+	\ifthenelse{\isundefined{\@phone}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\iconPhone\acvHeaderIconSep\@phone%
+		}}%
+	\ifthenelse{\isundefined{\@email}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{mailto:\@email}{\iconEmail\acvHeaderIconSep\@email}%
+		}}%
+	\ifthenelse{\isundefined{\@homepage}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{http://\@homepage}{\iconHomepage\acvHeaderIconSep\@homepage}%
+		}}%
+	\ifthenelse{\isundefined{\@github}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{https://github.com/\@github}{\iconGithub\acvHeaderIconSep\@github}%
+		}}%
+	\ifthenelse{\isundefined{\@stackoverflowid}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{https://stackoverflow.com/users/\@stackoverflowid}{\iconStack\acvHeaderIconSep\@stackoverflowname}%
+		}}%
+	\ifthenelse{\isundefined{\@linkedin}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{https://www.linkedin.com/in/\@linkedin}{\iconLinkedin\acvHeaderIconSep\@linkedin}%
+		}}%
+	\ifthenelse{\isundefined{\@twitter}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{https://twitter.com/\@twitter}{\iconTwitter\acvHeaderIconSep\@twitter}%
+		}}%
+	\ifthenelse{\isundefined{\@skype}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\iconSkype\acvHeaderIconSep\@skype%
+		}}%
+	\ifthenelse{\isundefined{\@xing}}%
+		{}%
+		{\collectionadd{cvsocial}{%
+			\href{https://www.xing.com/profile/\@xing}{\iconXing\acvHeaderIconSep\@xing}%
+		}}%
+	\ifthenelse{\isundefined{\box@cvsocial}}%
+		{\newsavebox{\box@cvsocial}}%
+		{}%
+	\ifthenelse{\isundefined{\box@temp}}%
+		{\newsavebox{\box@temp}}%
+		{}%
+	\ifthenelse{\isundefined{\@acvHeaderSocialWidth}}%
+		{\newlength{\@acvHeaderSocialWidth}}%
+		{}%
+	\setlength{\@acvHeaderSocialWidth}{0pt}%
+	\collectionloop{cvsocial}{%
+		\ifthenelse{\collectionloopid = 0}%
+			{\savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}}%
+			{%
+				\savebox{\box@temp}%
+					{\usebox{\box@cvsocial}\headersocialstyle{\acvHeaderSocialSep\collectionloopitem}}%
+				\settowidth{\@acvHeaderSocialWidth}{\usebox{\box@temp}}%
+				\ifthenelse{\lengthtest{\@acvHeaderSocialWidth > \textwidth}}%
+					{%
+						\usebox{\box@cvsocial}\\%
+						\savebox{\box@cvsocial}{\headersocialstyle{\collectionloopitem}}%
+					}{%
+						\savebox{\box@cvsocial}{\usebox{\box@temp}}%
+					}%
+			}%
+	}%
+	\usebox{\box@cvsocial}%
 }%
 
 %-------------------------------------------------------------------------------
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
-  \fancyfoot{}
-  \fancyfoot[L]{\footerstyle{#1}}
-  \fancyfoot[C]{\footerstyle{#2}}
-  \fancyfoot[R]{\footerstyle{#3}} 
+	\fancyfoot{}
+	\fancyfoot[L]{\footerstyle{#1}}
+	\fancyfoot[C]{\footerstyle{#2}}
+	\fancyfoot[R]{\footerstyle{#3}} 
 }
 
 %-------------------------------------------------------------------------------
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
-  \vspace{\acvSectionTopSkip}
-  \sectionstyle{#1}
-  \phantomsection
-  \ifbool{acvSectionRuleFill}%
-    {\par\nobreak\vspace*{-\baselineskip}\color{accent}\vhrulefill{0.6pt}}%
-    {\color{accent}\vhrulefill{0.6pt}}%
+	\vspace{\acvSectionTopSkip}
+	\sectionstyle{#1}
+	\phantomsection
+	\ifbool{acvSectionRuleFill}%
+		{\par\nobreak\vspace*{-\baselineskip}\color{accent}\vhrulefill{0.6pt}}%
+		{\color{accent}\vhrulefill{0.6pt}}%
 }
 
 % Define a subsection for CV
 % Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
-  \subsectionstyle{#1}
-  \phantomsection
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-3mm}
+	\subsectionstyle{#1}
+	\phantomsection
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for paragraphs
 \newenvironment{cvparagraph}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \begin{justify}
-    \paragraphstyle
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\begin{justify}
+		\paragraphstyle
 }{%
-  \end{justify}
+	\end{justify}
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for lists of items
 \newenvironment{cvitems}{%
-  \begin{itemize}[leftmargin=2ex, noitemsep]
-    \setlength{\parskip}{0pt}
-    \renewcommand{\labelitemi}{$\smblksquare$}
-  }{%
-  \end{itemize}
+	\begin{itemize}[leftmargin=2ex, noitemsep]
+		\setlength{\parskip}{0pt}
+		\renewcommand{\labelitemi}{$\smblksquare$}
+	}{%
+	\end{itemize}
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for entries of experience/education
 \newenvironment{cventries}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \begin{center}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\begin{center}
 }{%
-  \end{center}
+	\end{center}
 }
 % Define an entry of experience/education
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}%
+	\setlength\tabcolsep{0pt}
+	\setlength{\extrarowheight}{0pt}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+		\ifempty{#2#3}
+			{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+			{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+			\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+		\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+	\end{tabular*}%
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for academic works and projects
 \newenvironment{cvworks}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \begin{center}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\begin{center}
 }{%
-  \end{center}
+	\end{center}
 }
 % Define an academic work or project
 % Usage: \cvwork{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cvwork}[5]{%
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}%
+	\setlength\tabcolsep{0pt}
+	\setlength{\extrarowheight}{0pt}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+		\ifempty{#2#3}
+			{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+			{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+			\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+		\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+	\end{tabular*}%
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for honors and awards
 \newenvironment{cvhonors}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \center
-    \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
-    \tabularx{\textwidth}{C{1.5cm} X R{2.5cm}}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\center
+		\setlength\tabcolsep{0pt}
+		\setlength{\extrarowheight}{0pt}
+		\tabularx{\textwidth}{C{1.5cm} X R{2.5cm}}
 }{%
-    \endtabularx
-  \endcenter
+		\endtabularx
+	\endcenter
 }
 % Define an entry for an honor or award
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
-  \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+	\honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
 %-------------------------------------------------------------------------------
 % Define an environment for sets of skills
 \newenvironment{cvskills}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \center
-    \setlength\tabcolsep{1ex}
-    \setlength{\extrarowheight}{0pt}
-    \renewcommand{\tabularxcolumn}[1]{p{##1}} % align columns vertically
-    \tabularx{\textwidth}{r X}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\center
+		\setlength\tabcolsep{1ex}
+		\setlength{\extrarowheight}{0pt}
+		\renewcommand{\tabularxcolumn}[1]{p{##1}} % align columns vertically
+		\tabularx{\textwidth}{r X}
 }{%
-    \endtabularx
-  \endcenter
+		\endtabularx
+	\endcenter
 }
 % Define a set of skills
 % Usage: \cvskill{<type>}{<skillset>}
@@ -603,48 +603,48 @@
 %-------------------------------------------------------------------------------
 % Define an environment for groups of skills
 \newenvironment{cvgroups}{%
-  \ifthenelse{\isundefined{\c@group}}
-    {\newcounter{group}}
-    {\setcounter{group}{0}}
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \center
-    \setlength\tabcolsep{0.15cm}
-    \setlength{\arrayrulewidth}{0.8pt}
-    \setlength{\extrarowheight}{0pt}
-    \arrayrulecolor{accent}
-    \tabularx{\textwidth}{c | X}
+	\ifthenelse{\isundefined{\c@group}}
+		{\newcounter{group}}
+		{\setcounter{group}{0}}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\center
+		\setlength\tabcolsep{0.15cm}
+		\setlength{\arrayrulewidth}{0.8pt}
+		\setlength{\extrarowheight}{0pt}
+		\arrayrulecolor{accent}
+		\tabularx{\textwidth}{c | X}
 }{%
-    \endtabularx
-  \endcenter
+		\endtabularx
+	\endcenter
 }
 % Define a group of skills
 % Usage: \cvgroup{<group>}{<skillset>}
 \newcommand*{\cvgroup}[2]{%
-  \stepcounter{group}
-  \ifnumodd{\value{group}}
-    {%
-      \skillgroupstyle{\cellcolor{lightgray!10}#1} &
-      \skillsetstyle{%
-        \vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
-      } \\
-    }{%
-      \skillgroupstyle{#1} &
-      \skillsetstyle{\cellcolor{lightgray!10}%
-        \vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
-      } \\
-    }
+	\stepcounter{group}
+	\ifnumodd{\value{group}}
+		{%
+			\skillgroupstyle{\cellcolor{lightgray!10}#1} &
+			\skillsetstyle{%
+				\vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
+			} \\
+		}{%
+			\skillgroupstyle{#1} &
+			\skillsetstyle{\cellcolor{lightgray!10}%
+				\vspace{-4.0mm}\begin{cvitems}#2\end{cvitems}\vspace{-4.0mm}
+			} \\
+		}
 }
 % Define a legend for cvgroups
 % Usage: \cvlegend{<title>}{<legend>}
 \newcommand*{\cvlegend}[2]{%
-  \cline{2-2}
-  \multicolumn{2}{L{\textwidth-0.75cm}}{%
-    \rule{0pt}{14pt}\hspace{0.75cm}\ifempty{#1}{#2}{#1\enspace#2}%
-  }
+	\cline{2-2}
+	\multicolumn{2}{L{\textwidth-0.75cm}}{%
+		\rule{0pt}{14pt}\hspace{0.75cm}\ifempty{#1}{#2}{#1\enspace#2}%
+	}
 }
 % Define an entry of cvgroups legend
 % Usage: \legend{<group>}{<description>}
 \newcommand*{\legend}[2]{%
-  \skillgroupstyle{#1}\enspace\skillsetstyle{\small#2}\enspace
+	\skillgroupstyle{#1}\enspace\skillsetstyle{\small#2}\enspace
 }
