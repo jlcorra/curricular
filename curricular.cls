@@ -178,15 +178,15 @@
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\normalsize\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\normalsize\bodyfont\itshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\normalsize\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\normalsize\bodyfontlight\slshape\color{accent} #1}}
+\newcommand*{\entrydatestyle}[1]{{\normalsize\bodyfontlight\upshape\color{accent} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\normalsize\bodyfontlight\upshape\color{graytext} #1}}
 \newcommand*{\descriptionstyle}[1]{{\normalsize\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
 \newcommand*{\honortitlestyle}[1]{{\normalsize\bodyfontlight\itshape\color{text} #1}}
 \newcommand*{\honorpositionstyle}[1]{{\normalsize\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\honordatestyle}[1]{{\normalsize\bodyfontlight\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\normalsize\bodyfontlight\slshape\color{accent} #1}}
+\newcommand*{\honorlocationstyle}[1]{{\normalsize\bodyfontlight\itshape\color{accent} #1}}
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\normalsize\bodyfont\bfseries\textcolor{darktext}{#1}}}
